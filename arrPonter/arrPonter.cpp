@@ -2,8 +2,19 @@
 
 void pIntegers(int* ptr)
 {
-    std::cout << *ptr << std::endl;
-    { (*ptr)--; }
+    int end = 10;
+    int begin = 0;
+    while (begin < end)
+    {
+
+        int tempValue = *(ptr + begin);
+        *(ptr + begin) = *(ptr + end - 1);
+        *(ptr + end - 1) = tempValue;
+        end--;
+        begin++;
+
+    }
+
 }
 
 int main()
@@ -11,11 +22,14 @@ int main()
 
     int vars[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    for (int i = 9; i >= 0; i--) {
+    pIntegers(vars);
 
-        pIntegers(&vars[9]);
+    for (int i = 0; i < 10; i++)
+    {
+        std::cout << vars[i] << " ";
     }
+
+
 
     return 0;
 }
-
